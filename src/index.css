@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&family=Manrope:wght@200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", "Manrope", sans-serif;
+
+  --color-primary: #D4AF37; /* Ouro Premium */
+  --color-dark: #111111; /* Carvão mais profundo */
+  --color-text: #4A4A4A; /* Grafite */
+  --color-bg: #FAFAF6; /* Off-white */
+  --color-surface: #F2EFE9; /* Areia */
+  --color-border: rgba(212, 175, 55, 0.2);
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text font-sans antialiased selection:bg-primary/30 selection:text-dark;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-dark tracking-tight leading-tight;
+  }
+}
+
+.gold-border-gradient {
+  position: relative;
+  border: 1px solid transparent;
+  background: linear-gradient(#111, #111) padding-box,
+              linear-gradient(135deg, #D4AF37, #F5E0A3, #B8860B) border-box;
+}
+
+.metallic-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #F5E0A3 50%, #B8860B 100%);
+}
+
+.geometric-grid {
+  background-image: 
+    linear-gradient(to right, rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dark-geometric {
+  background-color: #111;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23d4af37' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.btn-metallic {
+  @apply relative overflow-hidden transition-all duration-300;
+  background: linear-gradient(135deg, #D4AF37 0%, #F5E0A3 50%, #B8860B 100%);
+  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+}
+
+.btn-metallic:hover {
+  @apply brightness-110 -translate-y-0.5;
+  box-shadow: 0 8px 25px rgba(184, 134, 11, 0.4);
+}
+
+.bento-card {
+  @apply relative overflow-hidden rounded-lg border border-border/50 transition-all duration-500;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.floating-slow {
+  animation: floating 6s ease-in-out infinite;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(to right, #D4AF37, #D4AF37 4px, transparent 4px, transparent 8px);
+  z-index: 0;
+}
